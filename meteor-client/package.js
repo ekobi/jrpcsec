@@ -1,7 +1,7 @@
 Package.describe({
   name: 'verody:jrpcsec-client',
-  version: '0.0.1',
-  summary: 'json RPC client, secured with Forge TLS, running over binaryjs websockets.',
+  version: '0.0.2',
+  summary: 'JRPCSec packaged for Meteor client.',
   git: 'git@github.com:ekobi/jrpcsec.git',
   documentation: null
 });
@@ -13,7 +13,7 @@ Package.onUse(function(api) {
         'binary.min.js',
         'jrpc.min.js',
         'jrpcsec-client.js'], ['client', 'server']);
-    api.export (['JRPCSec', 'Forge'], ['client','server']);
+    api.export (['JRPCSec', 'Forge'], ['client']);
 });
 
 Package.onTest(function(api) {
