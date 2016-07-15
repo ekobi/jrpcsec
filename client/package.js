@@ -2,8 +2,8 @@ Package.describe({
   name: 'verody:jrpcsec-client',
   version: '0.0.1',
   summary: 'json RPC client, secured with Forge TLS, running over binaryjs websockets.',
-  git: '',
-  documentation: 'README.md'
+  git: 'git@github.com:ekobi/jrpcsec.git',
+  documentation: null
 });
 
 Package.onUse(function(api) {

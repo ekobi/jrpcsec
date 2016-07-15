@@ -15,6 +15,11 @@
         "forge"
     ],
     "author": "Verody, LLC",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:ekobi/jrpcsec.git"
+    },
+
     "license": "ISC",
     "dependencies": {
         "binaryjs": "^0.2.1",
@@ -23,3 +28,4 @@
         "underscore": "^1.8.3"
     }
 }
+
