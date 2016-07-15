@@ -1,6 +1,6 @@
 Package.describe({
   name: 'verody:jrpcsec-client',
-  version: '0.0.2',
+  version: '0.0.4',
   summary: 'JRPCSec packaged for Meteor client.',
   git: 'git@github.com:ekobi/jrpcsec.git',
   documentation: null
@@ -12,7 +12,7 @@ Package.onUse(function(api) {
         'forge.verody-bundle.js',
         'binary.min.js',
         'jrpc.min.js',
-        'jrpcsec-client.js'], ['client', 'server']);
+        'jrpcsec-client.js'], ['client']);
     api.export (['JRPCSec', 'Forge'], ['client']);
 });
 
