@@ -1,0 +1,28 @@
+{
+    "name": "jrpcsec-node-client",
+    "version": "0.1.0",
+    "description": "JRPCSec client packaged for Node",
+    "main": "jrpcsec-client-node.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "json",
+        "rpc",
+        "forge",
+        "websockets",
+        "binaryjs"
+    ],
+    "author": "Verody, LLC",
+    "license": "ISC",
+    "dependencies": {
+        "binaryjs": "^0.2.1",
+        "jrpc": "^3.1.2",
+        "node-forge": "^0.6.41",
+        "underscore": "^1.8.3"
+    },
+    "files": [ "jrpcsec-client-node.js" ],
+    "scripts": {
+        "prepublish": "./wrap.sh"
+    }
+}

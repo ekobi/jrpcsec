@@ -9,9 +9,8 @@ const _configDefaults = {
     idString: 'jrpcsec-client'
     
 };
-
 JRPCSec = function () {
-    
+
     if (!(this instanceof JRPCSec)) {
         //return new JRPCSec (arguments);
         var ret = Object.create(JRPCSec.prototype);
