@@ -1,10 +1,11 @@
 {
     "name": "jrpcsec-node-client",
-    "version": "0.1.0",
+    "version": "0.1.10",
     "description": "JRPCSec client packaged for Node",
-    "main": "jrpcsec-client-node.js",
+    "main": "jrpcsec-node-client.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepublish": "./wrap.sh"
     },
     "repository" :
     { "type" : "git",
@@ -24,9 +25,5 @@
         "jrpc": "^3.1.2",
         "node-forge": "^0.6.41",
         "underscore": "^1.8.3"
-    },
-    "files": [ "jrpcsec-client-node.js" ],
-    "scripts": {
-        "prepublish": "./wrap.sh"
     }
 }

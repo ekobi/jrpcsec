@@ -4,7 +4,6 @@ cat <<EOF
 BinaryClient = require ('binaryjs').BinaryClient;
 JRPC = require ('jrpc');
 Forge = require ('node-forge');
-JRPCSec = require ('./jrpcsec-client.js');
-module.exports = JRPCSec;
+exports.JRPCSec = JRPCSec;
 EOF
-) > jrpcsec-client-node.js
+) > jrpcsec-node-client.js
