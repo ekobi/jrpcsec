@@ -130,6 +130,15 @@ JRPCSec = function () {
 
 
     _self.binaryjsClient = new BinaryClient (_self.config.remoteURL);
+    _self.binaryjsClient.on ('error', function (error){
+        _self.logger('JRPCSec net error:', error);
+        _self.logger ('remoteURL:', _self.config.remoteURL);
+        if ( _self.config.debug === true ) {
+            _self.logger ('config:', _self.config);
+        }
+        _self.close ();
+    });
+
     _self.binaryjsClient.on ('open', function (){
         //_self.logger ('[jrpcsec/binaryjsClient onopen] client.streams:', _self.binaryjsClient.streams);
 
@@ -161,10 +170,18 @@ JRPCSec.prototype.close = function () {
     var _self = this;
     if (_self.binaryjsClient) {
 
-        _self.jrpcClient.shutdown().setTransmitter(null);
-        _self.tlsClient.reset(true);
-        _self.tlsStream.destroy();
-        _self.binaryjsClient.close();
+        if ( _self.jrpcClient !== undefined ) {
+            _self.jrpcClient.shutdown().setTransmitter(null);
+        }
+        if ( _self.tlsClient !== undefined ) {
+            _self.tlsClient.reset(true);
+        }
+        if ( _self.tlsStream !== undefined ) {
+            _self.tlsStream.destroy();
+        }
+        if ( _self.binaryjsClient !== undefined ) {
+            _self.binaryjsClient.close();
+        }
 
         _self.tlsClient = undefined;
         _self.tlsStream = undefined;
