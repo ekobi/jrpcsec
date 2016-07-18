@@ -1,6 +1,6 @@
 Package.describe({
   name: 'verody:jrpcsec-client-client',
-  version: '0.1.0',
+  version: '0.1.1',
   summary: 'JRPCSec client packaged for Meteor client architecture.',
   git: 'git@github.com:ekobi/jrpcsec.git',
   documentation: null

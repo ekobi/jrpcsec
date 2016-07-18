@@ -1,3 +1,4 @@
+"use strict;"
 const _configDefaults = {
     debug: false,
     clientCertPEM: '',
@@ -6,8 +7,8 @@ const _configDefaults = {
     cipherSuites: null,
     remoteURL: 'ws://localhost:9000/jrpcsec',
     methods: [],
-    idString: 'jrpcsec-client'
-    
+    idString: 'jrpcsec-client',
+    verifyPeer: undefined
 };
 JRPCSec = function () {
 
@@ -80,10 +81,29 @@ JRPCSec = function () {
         server: false,
 
         verify: function(connection, verified, depth, certs) {
-            //_self.logger('[jrpcsec/tls verify] server certificate verified:', verified);
+            if(depth === 0) {
+                if (_.isFunction (_self.config.verifyPeer)) {
+                    var verifyStatus = verified===true?
+                        {valid:true} : { valid:false, info:verified};
+
+                    var cbStatus = _self.config.verifyPeer (certs[0],verifyStatus);
+                    if (cbStatus === true) {
+                        return true;
+                    } else if (cbStatus && cbStatus.alert && cbStatus.message) {
+                        return {
+                            alert: cbStatus.alert,
+                            message: cbStatus.message
+                        };
+                    } else {
+                        return {
+                            alert: Forge.tls.Alert.Description.bad_certificate,
+                            message: "unknown application error validating certificate"
+                        }
+                    }
+                }
+            }
             return verified;
         },
-        
         connected: function(connection) {
             //_self.logger('[jrpcsec/tls connected]');
             _self.jrpcClient = new JRPC ({client:true});

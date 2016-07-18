@@ -108,9 +108,7 @@ function JRPCSecServer (config){
                             // XXX: need to figure out how to communicate useful failure
                             //      info to app. See tls.js private helper _alertDescToCertError
                             var verifyStatus = verified===true?
-                                {valid:true} : { valid:false, info:verified}
-                            verifyStatus.valid = false;
-                            verifyStatus.info = verified;
+                                {valid:true} : { valid:false, info:verified};
                             
                             //
                             // call back function return value must either:
@@ -132,8 +130,8 @@ function JRPCSecServer (config){
                                 }
                             }
                         }
-                        return verified;
                     }
+                    return verified;
                 },
                 connected: function(connection) {
                     //console.log('[tlsServer] connected');
