@@ -29,7 +29,7 @@ JRPCSec = function () {
             throw TypeError ("JRPCSec -- second argument must be a callback function.");
         }
         _self.config = arguments[0];
-        _self.readyCB = argunemts[1];
+        _self.readyCB = arguments[1];
 
     } else if (arguments.length == 4) {
         if (!_.isFunction (arguments[3])) {
