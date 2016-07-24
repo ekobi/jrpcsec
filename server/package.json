@@ -1,31 +1,30 @@
 {
-    "name": "jrpcsec-server",
-    "version": "0.0.3",
-    "description": "json RPC server, secured with Forge TLS, running over binaryjs websockets.",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "main": "jrpcsec-server.js",
-    "keywords": [
-        "json",
-        "rpc",
-        "websocket",
-        "tls",
-        "binary",
-        "forge"
-    ],
-    "author": "Verody, LLC",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:ekobi/jrpcsec.git"
-    },
-
-    "license": "ISC",
-    "dependencies": {
-        "binaryjs": "^0.2.1",
-        "jrpc": "^3.1.1",
-        "node-forge": "^0.6.40",
-        "underscore": "^1.8.3"
-    }
+  "name": "jrpcsec-server",
+  "version": "0.0.4",
+  "description": "json RPC server, secured with Forge TLS, running over binaryjs websockets.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "jrpcsec-server.js",
+  "keywords": [
+    "json",
+    "rpc",
+    "websocket",
+    "tls",
+    "binary",
+    "forge"
+  ],
+  "author": "Verody, LLC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ekobi/jrpcsec.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "asyncawait": "^1.0.6",
+    "binaryjs": "^0.2.1",
+    "jrpc": "^3.1.1",
+    "node-forge": "^0.6.40",
+    "underscore": "^1.8.3"
+  }
 }
-

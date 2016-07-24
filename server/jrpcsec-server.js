@@ -4,7 +4,7 @@ var _ = require ('underscore');
 var JRPC = require ('jrpc');
 var forge = require ('node-forge'),
     pki = forge.pki;
-
+var async = require ('asyncawait/async');
 
 const defaults = {
     server: { port:9000 },
@@ -56,7 +56,7 @@ function JRPCSecServer (config){
         });
         binaryClient.on ('stream', function (binaryStream, meta) {
             if ( meta && meta.type && meta.type=='JRPCSec-TLS-Stream' ) {
-                //console.log ('[binaryClient onStream', binaryStream.id, ']', meta);
+                console.log ('[binaryClient onStream', binaryStream.id, ']', meta);
             } else {
                 //throw new RangeError ("Invalid stream metadata. Expecting meta.type:'JRPCSec-TLS-Stream'");
                 console.log ("[binaryClient] Invalid stream metadata. Expecting meta.type:'JRPCSec-TLS-Stream'");
@@ -65,15 +65,15 @@ function JRPCSecServer (config){
 
             //
             // new jrpcEP peer for every connection. We bind a stream context to
-            // the methods before exposing them.
+            // the methods before exposing them. And we arrange to make them await-able.
             var tlsPeerCert=undefined;
             var jrpcEP = new JRPC ();
             _.each (_self.rpcMethods, function (method, name) {
                 item={};
-                item[name]=method.bind({ context: {
+                item[name]=async(method.bind({ context: {
                     name:name,
                     getPeerCert:function(){ return tlsPeerCert; }
-                }});
+                }}));
                 jrpcEP.expose (item);
             });
 
